@@ -1,0 +1,206 @@
+// Random array picker source code from:https://www.youtube.com/watch?v=iCXBNKC6Wjw
+// The Coding Train. 7.1: What Is An Array? - P5.Js Tutorial. 2015,  https://www.youtube.com/watch?v=VIQoUghHSxU
+
+let w;
+let h;
+
+let multi = ['#E677E4', '#FFC0CB', '#FD980A', '#FFB215', '#ABFF0F', '#14FF12' ,'#418BFF'];
+let mycolor;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+
+  let rand = round(random(multi.length - 1));
+  mycolor = multi[rand];
+  /*source code from: https:www.youtube.com/watch?v=iCXBNKC6Wjw*/
+
+  w = windowWidth;
+  h = windowHeight;
+
+  angleMode(DEGREES);
+  frameRate(9);
+  ellipseMode(CENTER);
+}
+
+function draw() {
+  background(mycolor);
+
+  if ((mouseX > 0) && (mouseY > 0) && (mouseX < w / 4) && (mouseY < h / 4)) {
+    awake();
+  } else if (mouseIsPressed) {
+    noo();
+  } else {
+    sleepy();
+  }
+
+  function sleepy() {
+
+    //hair
+    noStroke();
+    fill("#010178");
+    rect(0, 0, w / 9, h / 5);
+    rect(w / 9, 0, w / 9, h / 7);
+    rect(w / 4.5, 0, w / 9, h / 5);
+    rect(w / 3, 0, w / 9, h / 7);
+    rect(w * 4 / 9, 0, w / 9, h / 5);
+    rect(w * 5 / 9, 0, w / 9, h / 7);
+    rect(w * 6 / 9, 0, w / 9, h / 5);
+    rect(w * 7 / 9, 0, w / 9, h / 7);
+    rect(w * 8 / 9, 0, w / 9, h / 5);
+    rect(w, 0, w / 9, h / 7);
+
+    //left eye closed
+    fill("#010178");
+    ellipse(w / 3, h / 2, w / 4, w / 4);
+
+    //right eye closed
+    noStroke();
+    fill("#010178");
+    ellipse(width - w / 3, h / 2, w / 4, w / 4);
+
+    //mouth sleepy
+    {  
+    fill("FFFFFFF");
+    stroke("#010178");
+    strokeWeight(h / 40);
+    var step = frameCount % 20;
+    translate(width - w / 2, height - h / 5);
+    applyMatrix(1 / step, 0, 0, 1 / step, 0, 0);
+    ellipse(10, 0, w / 5, w / 5);
+    textSize(80);
+    noStroke();
+    fill('#FFFFFF');
+    text('zzz', w / 5, w / 5);
+    resetMatrix();
+  }
+
+  //left eyebrow
+  rectMode(CENTER);
+  fill("#010178");
+  rect(w / 3, h / 3, w / 4, h / 20);
+
+  //right eyebrow
+  rect(width - w / 3, h / 3, w / 4, h / 20);
+
+  //nose
+  fill("#FFFFFF");
+  arc(w / 2, height - h / 2.8, w / 16, w / 16, 180, 0);
+}
+
+function awake() {
+
+  //hair
+  noStroke();
+  fill("#010178");
+  rect(0, 0, w / 9, h / 5);
+  rect(w / 9, 0, w / 9, h / 7);
+  rect(w / 4.5, 0, w / 9, h / 5);
+  rect(w / 3, 0, w / 9, h / 7);
+  rect(w * 4 / 9, 0, w / 9, h / 5);
+  rect(w * 5 / 9, 0, w / 9, h / 7);
+  rect(w * 6 / 9, 0, w / 9, h / 5);
+  rect(w * 7 / 9, 0, w / 9, h / 7);
+  rect(w * 8 / 9, 0, w / 9, h / 5);
+  rect(w, 0, w / 9, h / 7);
+
+  //left eye open
+  noStroke();
+  fill('#010178');
+  ellipse(w / 3, h / 2, w / 4, w / 4);
+  fill('#69F5E7');
+  ellipse(w / 3, h / 2, w / 5, w / 5);
+  fill('#B6BDFA');
+  ellipse(w / 3, h / 2, w / 6, w / 6);
+  fill('#010178');
+  ellipse(w / 3, h / 2, w / 11, w / 11);
+  fill('#FFFFFF');
+  ellipse(w / 2.8, h / 2.1, w / 28, w / 28);
+
+  //right eye open
+  fill('#010178');
+  ellipse(width - w / 3, h / 2, w / 4, w / 4);
+  fill('#69F5E7');
+  ellipse(width - w / 3, h / 2, w / 5, w / 5);
+  fill('#B6BDFA');
+  ellipse(width - w / 3, h / 2, w / 6, w / 6);
+  fill('#010178');
+  ellipse(width - w / 3, h / 2, w / 11, w / 11);
+  fill('#FFFFFF');
+  ellipse(width - w / 3.2, h / 2.1, w / 28, w / 28);
+
+  //mouth
+  fill("#010178");
+  ellipse(w / 2, h / 1.2, w / 8, w / 8);
+  
+  //left eyebrow
+  rectMode(CENTER);
+  fill("#010178");
+  rect(w / 3, h / 3, w / 4, h / 20);
+
+  //right eyebrow
+  rect(width - w / 3, h / 3, w / 4, h / 20);
+
+  //nose
+  fill("#FFFFFF");
+  arc(w / 2, height - h / 2.8, w / 16, w / 16, 180, 0);
+}
+
+function noo(){
+  
+  //Noo@#! appears on mouse click
+    textSize(50);
+    fill("#010178");
+    text('Noo@#!', mouseX, mouseY);
+  
+   //hair
+    noStroke();
+    fill("#010178");
+    rect(0, 0, w / 9, h / 5);
+    rect(w / 9, 0, w / 9, h / 7);
+    rect(w / 4.5, 0, w / 9, h / 5);
+    rect(w / 3, 0, w / 9, h / 7);
+    rect(w * 4 / 9, 0, w / 9, h / 5);
+    rect(w * 5 / 9, 0, w / 9, h / 7);
+    rect(w * 6 / 9, 0, w / 9, h / 5);
+    rect(w * 7 / 9, 0, w / 9, h / 7);
+    rect(w * 8 / 9, 0, w / 9, h / 5);
+    rect(w, 0, w / 9, h / 7);
+
+    //left eye closed
+    fill("#010178");
+    ellipse(w / 3, h / 2, w / 4, w / 4);
+
+    //right eye closed
+    noStroke();
+    fill("#010178");
+    ellipse(width - w / 3, h / 2, w / 4, w / 4);
+
+    //mouth sleepy
+  { fill("FFFFFFF");
+    stroke("#010178");
+    strokeWeight(h / 40);
+    var step = frameCount % 20;
+    translate(width - w / 2, height - h / 5);
+    applyMatrix(1 / step, 0, 0, 1 / step, 0, 0);
+    ellipse(10, 0, w / 5, w / 5);
+    textSize(80);
+    noStroke();
+    fill('#FFFFFF');
+    text('zzz', w / 5, w / 5);
+    resetMatrix();
+  }
+  
+ //left eyebrow
+  rectMode(CENTER);
+  fill("#010178");
+  rect(w / 3, h / 3, w / 4, h / 20);
+
+  //right eyebrow
+  rect(width - w / 3, h / 3, w / 4, h / 20);
+
+  //nose
+  fill("#FFFFFF");
+  arc(w / 2, height - h / 2.8, w / 16, w / 16, 180, 0);
+}
+  
+}
